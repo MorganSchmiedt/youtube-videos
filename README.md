@@ -33,6 +33,11 @@ Liens vers la chaine: https://www.youtube.com/channel/UCfIO4fDM2ZWuQ3-SE13tpwA/
 
 ## Liens et codes source des vidéos
 
+**La sécurité CORS - Programmer un convertisseur de devises en HTML, CSS, JavaScript (4/4)**\
+[▶ Vidéo](https://youtu.be/HRPXrmjAlIM) • [📚 Code source](programmation-web/video15)\
+*Dans cette 4ème et dernière version du convertisseur, les données ne sont plus copiées-collées manuellement mais récupérées directement depuis le site de la BCE. En raison de la politique de sécurité CORS appliquées par les navigateurs, la requête pour obtenir les taux ne peut pas être réalisée. Pour contourner cette sécurité, un proxy est programmé avec des en-têtes CORS qui accepte des requêtes d'origines différentes.*
+
+
 **Générer la page côté client - Programmer un convertisseur de devises en HTML, CSS, JavaScript (3/4)**\
 [▶ Vidéo](https://youtu.be/ubNC3zgJ46A) • [📚 Code source](programmation-web/video14)\
 *Dans cette 3ème version du convertisseur, la page HTML est générée côté client (Client Side Rendering), c'est à dire qu'une page vide est proposée au client, et le code JavaScript créé le contenu de la page à partir de données préalablement importées. Dans notre cas, les données sont importées depuis le site de la BCE, même si l'import se fait manuellement pour le moment.*
@@ -124,6 +129,7 @@ Liens vers la chaine: https://www.youtube.com/channel/UCfIO4fDM2ZWuQ3-SE13tpwA/
 - Créer une boucle avec une condition d'entrée et une condition de sortie (*for*): [▶ Vidéo](https://youtu.be/O-rR1iuzhmU?t=1903)- 
 - Créer une boucle jusqu'à qu'une condition de sortie soit réalisée (*do-while*): [▶ Vidéo](https://youtu.be/YKOoAEt_XcE?t=2384), [📃 Docs](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/do...while)
 - Charger une ressource extérieure (*fetch*): [▶ Vidéo](https://youtu.be/RQez8LueH40?t=1118), [📃 Docs](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API)
+- Comprendre la politique de sécurité CORS: [▶ Vidéo](https://youtu.be/HRPXrmjAlIM), [📃 Docs](https://developer.mozilla.org/fr/docs/Glossaire/CORS)
 
 
 #### JavaScript - Textes
