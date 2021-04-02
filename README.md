@@ -1,17 +1,12 @@
 # Ressources des vidéos YouTube
 
-Des vidéos sont réalisées pour expliquer le fonctionnement de la programmation Web (HTML, CSS, JavaScript).
+Ce repo contient les ressources réalisées dans [mes vidéos](https://www.youtube.com/c/MorganSchmiedt)
 
-Ce dépôt contient les liens vers ces vidéos et les programmes réalisés.
-
-Il contient également les liens vers les positions exactes des différents thèmes abordés.
-
-Liens vers la chaine: https://www.youtube.com/channel/UCfIO4fDM2ZWuQ3-SE13tpwA/
+La présentation des vidéos est disponible sur : [https://morgan.schmiedt.fr/developpement-web](https://morgan.schmiedt.fr/developpement-web)
 
 
-## Menu
+## Liens direct par thème
 
-- [Liens et codes source des vidéos](#liens-et-codes-source-des-vidéos)
 - [Liens par thème](#liens-par-thème)
   - [HTML](#html)
   - [CSS](#css)
@@ -30,73 +25,6 @@ Liens vers la chaine: https://www.youtube.com/channel/UCfIO4fDM2ZWuQ3-SE13tpwA/
 - [Contact](#contact)
 - [Licence](#licence)
 
-
-## Liens et codes source des vidéos
-
-**La sécurité CORS - Programmer un convertisseur de devises en HTML, CSS, JavaScript (4/4)**\
-[▶ Vidéo](https://youtu.be/HRPXrmjAlIM) • [📚 Code source](programmation-web/video15)\
-*Dans cette 4ème et dernière version du convertisseur, les données ne sont plus copiées-collées manuellement mais récupérées directement depuis le site de la BCE. En raison de la politique de sécurité CORS appliquées par les navigateurs, la requête pour obtenir les taux ne peut pas être réalisée. Pour contourner cette sécurité, un proxy est programmé avec des en-têtes CORS qui accepte des requêtes d'origines différentes.*
-
-
-**Générer la page côté client - Programmer un convertisseur de devises en HTML, CSS, JavaScript (3/4)**\
-[▶ Vidéo](https://youtu.be/ubNC3zgJ46A) • [📚 Code source](programmation-web/video14)\
-*Dans cette 3ème version du convertisseur, la page HTML est générée côté client (Client Side Rendering), c'est à dire qu'une page vide est proposée au client, et le code JavaScript créé le contenu de la page à partir de données préalablement importées. Dans notre cas, les données sont importées depuis le site de la BCE, même si l'import se fait manuellement pour le moment.*
-
-
-**Désérialiser des données XML - Programmer un convertisseur de devises en HTML, CSS, JavaScript (2/4)**\
-[▶ Vidéo](https://youtu.be/uMmnowx9wnI) • [📚 Code source](programmation-web/video13)\
-*Dans cette 2ème version du convertisseur, les taux de conversation sont importés depuis la page officielle de la BCE (Banque Centrale Européenne). Ces taux sont proposés au format de données XML. Un parseur XML est donc créé pour transformer les données dans un format compatible avec notre convertisseur.*
-
-
-**Programmer un convertisseur de devises en HTML, CSS, JavaScript (1/4)**\
-[▶ Vidéo](https://youtu.be/FBtGV5b6Kcc) • [📚 Code source](programmation-web/video12)\
-*Dans cette 1ère version du convertisseur, un seul couple de devises est réalisé (EUR-GBP) et le taux de conversion et fixé manuellement.*
-
-
-**Résoudre un SUDOKU automatiquement en JavaScript incl. Classes, Modules, Débuguage (3/3)**\
-[▶ Vidéo](https://youtu.be/YKOoAEt_XcE) • [📚 Code source](programmation-web/video11)\
-*Un algorithme est réalisé dans cette vidéo pour trouver rapidement la solution de n'importe quel Sudoku. L'algorithme utilise le Sudoku qui a été programmé dans les deux vidéos précédentes.*
-
-**Lire des données JSON, Affichage Responsive - Programmer un SUDOKU en HTML, CSS, JavaScript (2/3)**\
-[▶ Vidéo](https://youtu.be/RQez8LueH40) • [📚 Code source](programmation-web/video10)\
-*Des améliorations sont apportées au sudoku qui a été programmé dans la vidéo précédente. La première consiste à améliorer l'affichage. Contrairement à la première version du Sudoku où la grille était uniquement basée sur la hauteur du navigateur, la grille est à présent calculée en fonction de la hauteur ET de la largueur du navigateur. La deuxième amélioration consiste à préparer des grilles dans un fichier à part et de charger une grille aléatoire au démarrage du jeu.* 
-
-**Programmer un SUDOKU en HTML, CSS et JavaScript (1/3)**\
-[▶ Vidéo](https://youtu.be/O-rR1iuzhmU) • [📚 Code source](programmation-web/video9)\
-*Un sudoku est programmé dans cette vidéo. Le Sudoku est un casse-tête qui consiste à remplir une grille de 9 par 9 avec des des nombres de 1 à 9. Il y a 3 règles: 1. Il ne doit pas y avoir deux nombres identiques sur une ligne; 2. Il ne doit pas y avoir deux nombres identiques sur une colonne; 3. Il ne doit pas y avoir deux nombres identiques sur chacun des neufs carrés. Ce petit jeu permet de montrer comment élaborer une grille qui s'adapte à la taille de l'écran et comment trouver les erreurs d'une grille Sudoku.*
-
-**Programmer un mini-jeu en HTML, CSS et JavaScript: Saisir et lire un nombre, Balise h1, div vs span**\
-[▶ Vidéo](https://youtu.be/GiZqIxAj-IE) • [📚 Code source](programmation-web/video8)\
-*Un mini-jeu est programmé dans cette vidéo. Le jeu consiste à trouver le nombre qui a été choisi par la machine. Si le nombre est correct, c'est gagné ! Sinon, une indication est donnée selon que le nombre proposé est plus grand ou plus petit que le nombre recherché.*
-
-**Programmation asynchrone en JavaScript: Événements, Callbacks, Promises, async-await**\
-[▶ Vidéo](https://youtu.be/nf0FvGwAQBg) • [📚 Code source](programmation-web/video7)\
-*Cette vidéo explique le fonctionnement de la programmation synchrone et asynchrone sur le Web et notamment en JavaScript. Les concepts d'événements, de Callback, de Promise, et les nouveaux mots clés async et await sont présentés et expliqués.*
-
-**Feuilles de style CSS, Outils de développement - Programmer un DÉ en HTML, CSS, JavaScript (3/3)**\
-[▶ Vidéo](https://youtu.be/3M4bgdjR1HE) • [📚 Code source](programmation-web/video6)\
-*Cette vidéo explique le fonctionnement des feuilles de style et comment est structuré le langage CSS utilisé dans les feuilles de styles.*
-
-**Structure d'une page HTML, Serveur Web, Événements - Programmer un DÉ en HTML, CSS, JavaScript (2/3)**\
-[▶ Vidéo](https://youtu.be/n4xQIrHVdOw) • [📚 Code source](programmation-web/video5)\
-*Cette vidéo explique la structure d'une page Web en HTML et la signification des balises obligatoires d'une page (DOCTYPE, HEAD, BODY, META et TITLE). La vidéo explique aussi l'intérêt d'un Serveur Web et comment en installer un pour tester les pages Internet que l'on créé sur son propre ordinateur. Enfin, la vidéo montre comment utiliser JavaScript pour modifier les éléments de la page et afficher du texte à l'écran, afficher une image à l'écran, et jouer un son.*
-
-**Programmer un DÉ virtuel en HTML, CSS, JavaScript (1/3)**\
-[▶ Vidéo](https://youtu.be/uI2TjpOLMps) • [📚 Code source](programmation-web/video4)\
-*Un dé virtuel est réalisé dans cette vidéo. Cela permet notamment d'expliquer comment générer un nombre aléatoire, comment déclarer et utiliser un objet, comment déclarer un texte qui contient plusieurs lignes, et comment lire les arguments lorsque le programme est exécuté à partir de la ligne de commande.*
-
-**Exécuter un programme JavaScript: Éditeur de développement, Navigateur Web, Console, NodeJS**\
-[▶ Vidéo](https://youtu.be/ClY1zcXCOxs) • [📚 Code source](programmation-web/video3)\
-*Cette vidéo explique comment écrire un programme en JavaScript et l'exécuter dans un navigateur Web et dans la console avec NodeJS.*
-
-**Variables, Constantes, Boucles, Listes (Tableaux) - Écrire son premier programme JavaScript (2/2)**\
-[▶ Vidéo](https://youtu.be/WDeBpPgXCYU) • [📚 Code source](programmation-web/video2)
-
-**Fonction, Condition, Opération mathématique - Écrire son premier programme JavaScript (1/2)**\
-[▶ Vidéo](https://youtu.be/-W4s6Giw7ug) • [📚 Code source](programmation-web/video1)
-
-
-## Liens par thème
 
 ### HTML
 
