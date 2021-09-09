@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Calculatrice</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    border-spacing: 0;
+    box-sizing: border-box;
+  }
+
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    outline: none; 
+    border: 1px solid transparent;
+    background-color: inherit;
+    border-radius: 0;
+  }
+
+  body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 30px;
+  }
+
+  .calc {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      'res res res res'
+      'plus moins fois divise'
+      'sept huit neuf rien'
+      'quatre cinq six rien'
+      'un deux trois egal'
+      'zero zero virgule egal';
+    width: min(100vw, 100vh, 500px);
+    height: min(100vw, 100vh, 500px);
+    text-align: center;
+  }
+
+  .resultat { grid-area: res; }
+  .plus { grid-area: plus; }
+  .moins { grid-area: moins; }
+  .fois { grid-area: fois; }
+  .divise { grid-area: divise; }
+  .zero { grid-area: zero; }
+  .un { grid-area: un; }
+  .deux { grid-area: deux; }
+  .trois { grid-area: trois; }
+  .quatre { grid-area: quatre; }
+  .cinq { grid-area: cinq; }
+  .six { grid-area: six; }
+  .sept { grid-area: sept; }
+  .huit { grid-area: huit; }
+  .neuf { grid-area: neuf; }
+  .virgule { grid-area: virgule; }
+  .egal { grid-area: egal; }
+  .rien { grid-area: rien; }
+
+  .calc,
+  .calc > button,
+  .resultat {
+    border: 1px solid #e0e0e0;
+  }
+
+  .resultat {
+    text-align: right;
+    padding: .2em 20px;
+    background-color: #fff;
+  }
+
+  .nb {
+    background-color: #f5f6f7;
+  }
+
+  .plus,
+  .moins,
+  .divise,
+  .fois {
+    background-color: #f3f3f3;
+    color: #666;
+  }
+
+  .egal {
+    background-color: #006dcc;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+  <div class="calc">
+    <span class="resultat" id="resultat"></span>
+    <button class="plus" id="plus">+</button>
+    <button class="moins" id="moins">-</button>
+    <button class="fois" id="fois">x</button>
+    <button class="divise" id="divise">/</button>
+    <button class="egal" id="egal">=</button>
+    <button class="nb zero" id="zero">0</button>
+    <button class="nb un" id="un">1</button>
+    <button class="nb deux" id="deux">2</button>
+    <button class="nb trois" id="trois">3</button>
+    <button class="nb quatre" id="quatre">4</button>
+    <button class="nb cinq" id="cinq">5</button>
+    <button class="nb six" id="six">6</button>
+    <button class="nb sept" id="sept">7</button>
+    <button class="nb huit" id="huit">8</button>
+    <button class="nb neuf" id="neuf">9</button>
+    <button class="nb virgule" id="virgule">,</button>
+    <button class="rien"></button>
+  </div>
+<script>
+'use strict'
+/* eslint-env browser */
+
+// Nombre à gauche de l'opération
+// Variable de type chaine de caracteres
+let nombre1
+
+// Contenu du signe de l'opération (+, -, x, /)
+let operation
+
+// Nombre à droite de l'opération
+// Variable de type chaine de caracteres
+let nombre2
+
+// Total du calcul
+// Variable de type nombre
+let total
+
+// Ajouter un nombre au calcul
+const saisirNombre = nombre => {
+  // Si l'opération n'est pas encore connue
+  if (operation == null) {
+    // ... modifier le premier nombre
+    // Si le nombre ne contient rien
+    if (nombre1 == null) {
+      // ... initiliser la variable
+      nombre1 = ''
+    }
+
+    // Ajouter le nombre à la suite
+    nombre1 += nombre.toString()
+  } else {
+    // ... sinon, modifier le 2eme nombre
+    if (nombre2 == null) {
+      nombre2 = ''
+    }
+
+    nombre2 += nombre.toString()
+  }
+
+  rafraichirEcran()
+}
+
+// Ajouter une décimale
+const saisirDecimale = () => {
+  // Si l'opération n'est pas encore connue
+  if (operation == null) {
+    // ... modifier le premier nombre
+    // Si le nombre ne contient rien
+    if (nombre1 == null) {
+      // ... initialiser et rajouter un 0
+      nombre1 = '0.'
+    } else if (aDecimal(nombre1) === false) {
+      // Si le nombre n'a pas encore de décimale
+      // ... ajouter un séparateur
+      nombre1 += '.'
+    }
+  } else {
+    // ... sinon, modifier le 2eme nombre
+    if (nombre2 == null) {
+      nombre2 = '0.'
+    } else if (aDecimal(nombre2) === false) {
+      nombre2 += '.'
+    }
+  }
+  rafraichirEcran()
+}
+
+// Detecter si un nombre à une décimale
+const aDecimal = nombreText =>
+  nombreText.indexOf('.') >= 0
+
+// Définie l'opération du calcul
+const saisirOperation = sigle => {
+  // Si l'opération est déjà choisie
+  if (operation != null) {
+    // Ignorer et arrêter
+    return
+  }
+
+  // ... sinon, assigner la valeur
+  operation = sigle
+  rafraichirEcran()
+}
+
+// Calculter le total
+const calculerTotal = async() => {
+  // Vérifier si toutes les valeurs ont été définies
+  if (nombre1 == null
+  || nombre2 == null
+  || operation == null) {
+    return
+  }
+
+  const n1 = parseFloat(nombre1)
+  const n2 = parseFloat(nombre2)
+
+  switch (operation) {
+    case '+':
+      // Calcul le total
+      // total = n1 + n2
+      // Appelle l'API
+      // total = await fetch(`/api/addition?termes=${n1},${n2}`)
+      //   .then(res => res.text())
+      //   .then(contenuTexte => parseFloat(contenuTexte))
+      total = await fetch('/api/addition', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          termes: [n1, n2]
+        })
+      })
+        .then(res => res.json())
+        .then(obj => obj.resultat)
+      break
+    case '-':
+      total = n1 - n2
+      break
+    case 'x':
+      total = n1 * n2
+      break
+    case '/':
+      total = n1 / n2
+      break
+  }
+
+  rafraichirEcran()
+  reinitialiser()
+}
+
+const reinitialiser = () => {
+  // Réinitialise les variables
+  nombre1 = null
+  operation = null
+  nombre2 = null
+  total = null
+}
+
+const afficherEcran = text =>
+  document.getElementById('resultat').textContent = text
+
+const rafraichirEcran = () => {
+  let text = ''
+
+  // Si le nombre de gauche n'est pas défini
+  if (nombre1 == null) {
+    // Réinitialiser l'écran et s'arrêter
+    afficherEcran(text)
+    return
+  }
+
+  // ... sinon, rajouter le nombre au calcul
+  text += nombre1
+
+  // Si l'opération n'est pas définie
+  if (operation == null) {
+    // Afficher la partie du texte connue et s'arrêter
+    afficherEcran(text)
+    return
+  }
+
+  // ... sinon, rajouter l'opération au calcul
+  text += ` ${operation} `
+
+  if (nombre2 == null) {
+    afficherEcran(text)
+    return
+  }
+
+  text += nombre2
+
+  if (total == null) {
+    afficherEcran(text)
+    return
+  }
+
+  text += ` = ${total}`
+  afficherEcran(text)
+}
+
+document.addEventListener('keydown', e => {
+  const key = e.key
+
+  switch (key) {
+    case '0':
+      saisirNombre(0)
+      break
+    case '1':
+      saisirNombre(1)
+      break
+    case '2':
+      saisirNombre(2)
+      break
+    case '3':
+      saisirNombre(3)
+      break
+    case '4':
+      saisirNombre(4)
+      break
+    case '5':
+      saisirNombre(5)
+      break
+    case '6':
+      saisirNombre(6)
+      break
+    case '7':
+      saisirNombre(7)
+      break
+    case '8':
+      saisirNombre(8)
+      break
+    case '9':
+      saisirNombre(9)
+      break
+    case '+':
+      saisirOperation('+')
+      break
+    case '-':
+      saisirOperation('-')
+      break
+    case '*':
+      saisirOperation('x')
+      break
+    case '/':
+      saisirOperation('/')
+      e.preventDefault()
+      break
+    case 'Enter':
+      calculerTotal()
+      break
+    case '.':
+    case ',':
+      saisirDecimale()
+      break
+  }
+})
+
+
+document.getElementById('un').addEventListener('click',
+  () => saisirNombre(1))
+document.getElementById('deux').addEventListener('click',
+  () => saisirNombre(2))
+document.getElementById('trois').addEventListener('click',
+  () => saisirNombre(3))
+document.getElementById('quatre').addEventListener('click',
+  () => saisirNombre(4))
+document.getElementById('cinq').addEventListener('click',
+  () => saisirNombre(5))
+document.getElementById('six').addEventListener('click',
+  () => saisirNombre(6))
+document.getElementById('sept').addEventListener('click',
+  () => saisirNombre(7))
+document.getElementById('huit').addEventListener('click',
+  () => saisirNombre(8))
+document.getElementById('neuf').addEventListener('click',
+  () => saisirNombre(9))
+document.getElementById('zero').addEventListener('click',
+  () => saisirNombre(0))
+document.getElementById('virgule').addEventListener('click',
+  () => saisirDecimale())
+document.getElementById('plus').addEventListener('click',
+  () => saisirOperation('+'))
+document.getElementById('moins').addEventListener('click',
+  () => saisirOperation('-'))
+document.getElementById('fois').addEventListener('click',
+  () => saisirOperation('x'))
+document.getElementById('divise').addEventListener('click',
+  () => saisirOperation('/'))
+document.getElementById('egal').addEventListener('click',
+  () => calculerTotal())
+</script>
+</body>
+</html>
