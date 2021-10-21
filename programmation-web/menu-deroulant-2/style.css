@@ -1,0 +1,97 @@
+/* Réinitialiser les styles par défaut du navigateur */
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  border-spacing: 0;
+  box-sizing: border-box;
+}
+
+/* Retirer les pastilles avant les items des listes */
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #e7e7e8;
+}
+
+a {
+  color: #006dcc;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.menu-label,
+.menu-cb {
+  cursor: pointer;
+  appearance: none;
+  position: fixed;
+  height: 32px;
+  width: 32px;
+  top: 20px;
+  right: 30px;
+  z-index: 4;
+}
+
+.menu-nav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 90%;
+	max-width: 400px;
+  padding-top: 110px;
+  text-align: right;
+  background: #fff;
+  z-index: 2;
+  transform: translateX(100%);
+  transition: transform 1s linear;
+}
+
+.menu-item {
+  padding: .5em 20px;
+  border-top: 1px solid #ccc;
+}
+
+.menu-cb:checked ~ .menu-nav {
+  transform: translateX(0);
+}
+
+.menu-cote {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* SOUS MENU */
+
+.submenu-label {
+  font-size: 32px;
+  cursor: pointer;
+  color: #666;
+}
+
+.submenu-cb {
+  appearance: none;
+}
+
+.submenu-icon {
+  height: 32px;
+  width: 32px;
+  stroke-width: 2;
+  stroke: #666;
+  top: 6px;
+  position: relative;
+}
+
+.submenu-nav {
+  display: none;
+}
+
+.submenu-cb:checked ~ .submenu-nav {
+  display: block;
+}
