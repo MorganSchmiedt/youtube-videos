@@ -29,3 +29,11 @@ const changerEtatMenu = () => {
 
 const input = document.getElementById('menu-cb')
 input.addEventListener('click', changerEtatMenu)
+
+// Ajout ultérieur :
+// Lorsque le menu a été déroulé et l'utilisateur rafraichit
+// la page, exécuter la procédure d'ouverture pour permettre à
+// l'utilisateur de clôre le menu en cliquant sur l'écran
+if (input.checked) {
+  changerEtatMenu()
+}
